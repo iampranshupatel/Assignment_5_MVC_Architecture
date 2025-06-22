@@ -1,0 +1,57 @@
+@model IEnumerable<Assignment_5.Models.Event>
+@{
+    ViewData["Title"] = "All Events";
+    Layout = "_Layout";
+}
+
+<section class="content-container">
+  <div class="header-actions">
+    <h2 class="section-title">All Events</h2>
+    <a asp-action="Create" class="btn btn-primary">+ Add New Event</a>
+  </div>
+
+  @if (!Model.Any())
+  {
+    <p class="no-events">
+      No events yet. <a asp-action="Create" class="link-primary">Add one now!</a>
+    </p>
+  }
+  else
+  {
+    <table class="event-table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Location</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach (var e in Model)
+        {
+          <tr class="fade-in">
+            <td data-label="Title">@e.Title</td>
+            <td data-label="Description">@e.Description</td>
+            <td data-label="Date">@e.Date.ToString("yyyy-MM-dd")</td>
+            <td data-label="Time">@e.Time.ToString(@"hh\:mm")</td>
+            <td data-label="Location">@e.Location</td>
+            <td data-label="Actions" class="actions-cell">
+              <a asp-action="Edit" asp-route-id="@e.Id" class="btn btn-secondary">Edit</a>
+              <form asp-action="Delete"
+                    asp-route-id="@e.Id"
+                    method="post"
+                    class="inline-form"
+                    onsubmit="return confirm('Delete this event?');">
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btn btn-danger">Delete</button>
+              </form>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</section>

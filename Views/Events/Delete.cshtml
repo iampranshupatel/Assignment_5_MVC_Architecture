@@ -1,0 +1,43 @@
+@model Assignment_5.Models.Event
+@{
+    ViewData["Title"] = "Delete Event";
+    Layout = "_Layout";
+}
+
+<section class="content-container">
+  <h2 class="section-title">Delete Event</h2>
+  <p>Are you sure you want to delete this?</p>
+
+  <div class="form-group">
+    <strong>Title:</strong>
+    <p>@Model.Title</p>
+  </div>
+
+  <div class="form-group">
+    <strong>Description:</strong>
+    <p>@Model.Description</p>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group half-width">
+      <strong>Date:</strong>
+      <p>@Model.Date.ToString("yyyy-MM-dd")</p>
+    </div>
+    <div class="form-group half-width">
+      <strong>Time:</strong>
+      <p>@Model.Time.ToString(@"hh\:mm")</p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <strong>Location:</strong>
+    <p>@Model.Location</p>
+  </div>
+
+  <form asp-action="Delete" method="post" class="fade-in-up">
+    @Html.AntiForgeryToken()
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-link link-primary ml-2">Back to All Events</a>
+  </form>
+</section>

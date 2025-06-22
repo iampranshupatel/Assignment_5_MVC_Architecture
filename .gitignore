@@ -1,0 +1,46 @@
+## Build folders
+bin/
+obj/
+
+## Visual Studio files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Rider files
+.idea/
+
+## VS Code workspace settings
+.vscode/
+
+## Logging
+*.log
+
+## Azure Pipelines
+.azure-pipelines/
+
+## SQLite & local DB files
+*.db
+*.db-journal
+
+## NuGet packages
+*.nupkg
+# The packages folder can be ignored because of PackageRestore
+**/packages/*
+
+## Visual Studio cache
+.vs/
+
+## published output
+/publish/
+
+## user-specific files
+*.local
+*.env
+
+## JetBrains Rider
+.idea/
+
+## MacOS
+.DS_Store
